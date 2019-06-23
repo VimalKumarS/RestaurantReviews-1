@@ -1,4 +1,4 @@
-var staticCacheName = 'restaurant-v9';
+var staticCacheName = 'restaurant-v11';
 
 self.addEventListener('install', function(event) {
 	event.waitUntil(
@@ -31,9 +31,6 @@ self.addEventListener('install', function(event) {
         './restaurant.html?id=8',
         './restaurant.html?id=9',
 				'./restaurant.html?id=10',
-				'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
-				'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
-				'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon-2x.png',
 			]);
 		})
 	);
@@ -59,6 +56,7 @@ self.addEventListener('fetch', function(event) {
 	event.respondWith(
 		caches.match(event.request)
 		.then(function(response) {
+			console.log(event.request)
 			return response || fetch(event.request);
 		})
 	);
